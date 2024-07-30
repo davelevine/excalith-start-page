@@ -25,7 +25,6 @@ module.exports = {
 			"window-color": "var(--window-color)",
 			"glow-color": "var(--glow-color)",
 			transparent: "#00000000",
-			textColor: "var(--text-color)",
 			white: "var(--white)",
 			gray: "var(--gray)",
 			black: "var(--black)",
@@ -34,7 +33,9 @@ module.exports = {
 			yellow: "var(--yellow)",
 			blue: "var(--blue)",
 			cyan: "var(--cyan)",
-			magenta: "var(--magenta)"
+			magenta: "var(--magenta)",
+			violet: "var(--violet)",
+			orange: "var(--orange)"
 		},
 		extend: {
 			maxWidth: {
@@ -70,7 +71,7 @@ module.exports = {
 		"glow-color",
 		{
 			pattern:
-				/(bg|text|border|caret)-(white|gray|black|red|green|yellow|blue|cyan|magenta|textColor)/
+				/(bg|text|border|caret)-(white|gray|black|red|green|yellow|blue|cyan|magenta|violet|orange)/
 		}
 	]
 }

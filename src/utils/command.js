@@ -38,21 +38,14 @@ function openFilteredLinks(command, settings) {
 
 	let filterCount = filteredUrls.length
 	if (filterCount === 0) {
-		DefaultSearch(command, settings)
+		const defaultSerachEngine = settings.search.default
+		const target = settings.search.target
+		openLink(defaultSerachEngine + command, target)
 	} else {
 		filteredUrls.map((url, index) => {
-			const target = index === filterCount - 1 ? settings.urlLaunch.target : "_blank"
-			openLink(url, target)
+			openLink(url, index === filterCount - 1 ? "_self" : "_blank")
 		})
 	}
-}
-
-export function DefaultSearch(buffer, settings) {
-	const defaultSerachEngine = settings.search.default
-	const target = settings.search.target
-
-	const encodedBuffer = encodeURIComponent(buffer)
-	openLink(defaultSerachEngine + encodedBuffer, target)
 }
 
 function tryParseSearchShortcut(command, settings) {
@@ -70,9 +63,7 @@ function tryParseSearchShortcut(command, settings) {
 
 		if (name === regex_cmd[1]) {
 			const url = commandData.url
-
-			const encodedBuffer = encodeURIComponent(regex_cmd[2])
-			openLink(url.replace("{}", encodedBuffer, settings.urlLaunch.target))
+			openLink(url.replace("{}", regex_cmd[2]), settings.urlLaunch.target)
 			return true
 		}
 	}
